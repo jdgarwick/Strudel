@@ -34,7 +34,10 @@ use "@4" to stretch it 4 cycles before moving to the next thing
 note("<c3@4 g3@4>").sound("supersaw").fast(2)
 ```
 
+
 *effects*
+
+
 Add decay to adjust the length of the hit. Shorter decay is more "punchy"
 
 ```
