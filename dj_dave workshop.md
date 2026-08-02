@@ -1,6 +1,6 @@
 **DJ Dave Workshop**
 
-*notes and arps*
+# notes and arps
 
 plays one per cycle
 
@@ -35,7 +35,7 @@ note("<c3@4 g3@4>").sound("supersaw").fast(2)
 ```
 
 
-*effects*
+# effects
 
 
 Add decay to adjust the length of the hit. Shorter decay is more "punchy"
