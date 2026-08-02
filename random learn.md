@@ -1,7 +1,6 @@
 **Random Learn Notes**
 
-'''
-
+```
 //--------------------------------
 //--------------------------------
 window.DX = (donk=0.8) => {  // global window variable assigned to the dx variable
@@ -13,5 +12,4 @@ $BASS: n("<0 1 3 0 4 8 7 9>*8").scale("g1:phrygian")
 .set(DX("<.5 .3 .3 .6>*16"))
  
 _$: s("sbd!4") 
-
-'''
+```
