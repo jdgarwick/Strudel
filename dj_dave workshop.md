@@ -93,7 +93,73 @@ $arp:  n(irand("<4 12>")).scale("c3:minor:pentatonic").struct("x*<8 16>").sound(
 
 # using samples for percussion
 
-# using samples melodically
+use clip to shorten the length of the sample you are using. .clip(1) is playing the full sample, and .clip(0.5) is playing the first half of the sample
+
+```
+$oh: s("oh").bank("rolandtr808").struct("- x").fast(4).speed(0.5).clip(0.5)
+```
+
+make complex percussion by lengthening the struct to 16 spaces
+
+```
+$oh: s("oh").bank("rolandtr808").struct("- - x - - x - - x - - x - - x -").fast(4).speed(0.5).clip(0.5)
+```
+
+try adding <> to play different hits on different cycles
+
+```
+$oh: s("oh").bank("rolandtr808").struct("- - x - - x - - x - - x - - <- x> -").fast(4).speed(0.5).clip(0.5)
+```
+
+use random modifiers!! .sometimes(ply(2)) gives 50% probability of happening. There's also .almostNever(); .rarely(); etc.
+
+```
+$oh: s("oh").bank("rolandtr808").struct("- - x - - x - - x - - x - - <- x> -").fast(4).speed(0.5).clip(0.5).sometimes(ply(2))
+```
+
+if you want to add an effect to the thing that happens, add "x=>x."
+
+```
+$oh: s("oh").bank("rolandtr808").struct("- - x - - x - - x - - x - - <- x> -").fast(4).speed(0.5).clip(0.5).sometimes(x => x.ply(2).room(1))
+```
+
+# using imported samples melodically
+
+.chop() chops the sample into pieces, plays in normal succession
+
+```
+$: s("samples_2:1").chop(64) 
+```
+
+.loopAt() 
+
+```
+$: s("samples_2:1").chop(64) 
+```
+
+.clip - when you start playing the new one, stop playing the old one; .loopAt allows you to control the repetition
+
+```
+s("samples_2:1").scrub(0.22).chop(64).clip(0.5).loopAt(0.25)
+```
+
+use .slice(,) and give two parameters: the number of slices to slice the sample, and which slice to play
+
+```
+$chops: s("samples_2:1").slice(4, "3").clip(1).fast(4)
+```
+
+or add a bunch, sometimes play it twice, and sometimes play it in reverse
+
+```
+$chops: s("samples_2:0").slice(8, "1|2|3|4|5|6|7").clip(1).fast(8).speed("[1 -1]").sometimes(ply(2)).o(2)
+```
+
+.striate() adds a glitchy component to it
+
+```
+$chops: s("samples_2:0").slice(8, "1|2|3|4|5|6|7").clip(1).fast(8).speed("[1 -1]").sometimes(ply(2)).striate().o(2)
+```
 
 # effects
 
@@ -132,4 +198,10 @@ Use .ply to add how many times you want something to repeat. .ply(2) repeats eac
 
 ```
 note("<c3 g3>").sound("supersaw").fast(2).decay(0.1).room(1).coarse(10).lpf(500).ply(2)
+```
+
+Use .jux(rev) to play it in reverse maybe...
+
+```
+note("<c3 g3>").sound("supersaw").fast(2).decay(0.1).room(1).coarse(10).lpf(500).ply(2).jux(rev)
 ```
